@@ -172,7 +172,6 @@
                     <div class="header">
                         <h2>WEEKLY SALES</h2>
                         <ul class="header-dropdown m-r--5">
-
                         </ul>
                     </div>
                     <div class="body">
@@ -201,7 +200,7 @@
                             </select>
                         </div>
                         <br>
-                        <canvas id="line-chart" height="150"></canvas>
+                        <canvas id="line-chart" height="155"></canvas>
                     </div>
                 </div>
             </div>
