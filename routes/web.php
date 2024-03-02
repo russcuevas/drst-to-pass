@@ -127,7 +127,7 @@ Route::get('/admin/show-invoice/{InvoiceNumber}', [InvoiceController::class, 'Sh
 // ADMIN REPORTS ORDERS
 Route::get('/admin/admin_reports', [ReportsController::class, 'ReportsPage'])->name('admin.reports');
 Route::get('/admin/admin_delete_reports/{id}', [ReportsController::class, 'DeleteReport'])->name('admin.deletereports');
-Route::get('/generate-reports/{type}', [ReportsController::class, 'GenerateReports'])->name('admin.generateReports');
+Route::get('/admin/generate-reports/{type}', [ReportsController::class, 'GenerateReports'])->name('admin.generateReports');
 
 
 // ADMIN ANALYTICS

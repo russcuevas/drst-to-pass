@@ -147,7 +147,6 @@
                                             <th>Status</th>
                                             <th>Date ordered</th>
                                             <th>Received date</th>
-                                            <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -164,12 +163,6 @@
                                             <td>{{ $report->status }}</td>
                                             <td>{{ $report->ordered_date }}</td>
                                             <td>{{ $report->receiving_date }}</td>
-                                            <td>
-                                                {{-- <a href=""><i class="fa-solid fa-pen-to-square"></i> Update</a> <br> --}}
-                                                <a href="#" onclick="confirmDelete('{{ route('admin.deletereports', ['id' => $report->id])}}')" style="color: rgb(187, 56, 56); text-decoration: none;">
-                                                    <i class="fa-solid fa-trash"></i> Delete
-                                                </a>         
-                                            </td>
                                             </tr>
                                         @endforeach
                                             @else
