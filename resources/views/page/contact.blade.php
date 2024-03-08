@@ -108,7 +108,8 @@
                         </div>
                     </div>
                 </div>
-                <form action="#">
+                <form action="#" method="POST">
+                    @csrf
                     <div class="row">
                         <div class="col-lg-6 col-md-6">
                             <input type="text" placeholder="Your name">

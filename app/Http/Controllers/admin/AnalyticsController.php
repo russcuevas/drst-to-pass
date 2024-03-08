@@ -12,21 +12,28 @@ use Illuminate\Support\Facades\DB;
 
 class AnalyticsController extends Controller
 {
+    // display analytics page
     public function AnalyticsPage()
     {
+        // check if the role is admin or not
         if (Auth::check()) {
+            // if not it will redirect to loginpage
             if (Auth::user()->role !== 'admin') {
                 return redirect()->route('loginpage');
             } else {
+                // else it will go to analytics page
                 return view('admin.analytics.admin_analytics');
             }
         }
+        // else not authenticated it will navigate to loginpage
         return redirect()->route('loginpage');
     }
 
 
+    // displaying weekly sales
     public function GetWeeklySales(Request $request)
     {
+        // if it is set in the selected year and month it will update dynamically
         $year = $request->input('year');
         $month = $request->input('month');
 
@@ -39,12 +46,13 @@ class AnalyticsController extends Controller
         })->map(function ($group) {
             return $group->sum('total_amount');
         });
-
+        // response to be fetch in api
         return response()->json($weeklySales);
     }
 
     public function GetMonthlySales(Request $request)
     {
+        // if it is set in the month it will update dynamically
         $year = $request->input('year');
 
         $data = Reports::whereYear('receiving_date', $year)->get();
@@ -55,9 +63,11 @@ class AnalyticsController extends Controller
             return $group->sum('total_amount');
         });
 
+        // response to be fetch in api
         return response()->json($monthlySales);
     }
 
+    // display yearly sales
     public function GetYearlySales()
     {
         try {
@@ -72,14 +82,15 @@ class AnalyticsController extends Controller
                 return $carry->merge($item);
             }, collect());
 
+            // response to be fetch in api
             return response()->json($yearlySales);
         } catch (\Exception $e) {
+            // execeiiption if error display bad request
             return response()->json(['error' => $e->getMessage()], 500);
         }
     }
 
-
-
+    // display top products
     public function GetTopProducts()
     {
         $top_products = DB::table('top_products')
@@ -95,7 +106,8 @@ class AnalyticsController extends Controller
                 'total_sold' => $product->total_sold,
             ];
         });
-
+        
+        // response to be fetch in api
         return response()->json($pie_chart_data);
     }
 }

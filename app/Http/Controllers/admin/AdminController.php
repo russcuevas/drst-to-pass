@@ -18,22 +18,24 @@ class AdminController extends Controller
     {
         // check if the role is admin or not
         if (Auth::check()) {
+            // if not it will redirect to loginpage
             if (Auth::user()->role !== 'admin') {
                 return redirect()->route('loginpage');
             } else {
+                // else it will go to dashboard
                 $get_total_users = User::count();
                 $get_total_products = Product::count();
                 $get_total_sales = Reports::sum('total_amount');
                 $get_completed = Reports::where('status', 'Delivered')->count();
                 $recentOrders = $this->getRecentOrders();
                 $get_low_stock_products = $this->getLowStockProducts();
-
-
                 return view('admin.admin_dashboard', compact('get_total_users', 'get_total_products', 'get_total_sales', 'get_completed', 'recentOrders', 'get_low_stock_products'));
             }
         }
+        // else not authenticated it will navigate to loginpage
         return redirect()->route('loginpage');
     }
+    // display recent orders
     public function getRecentOrders()
     {
         return DB::table('order_details')
@@ -65,22 +67,28 @@ class AdminController extends Controller
             ->get();
     }
 
+    // update profile
     public function UpdateProfile()
     {
+        // check if the role is admin or not
         if (Auth::check()) {
+            // if not it will redirect to loginpage
             if (Auth::user()->role !== 'admin') {
                 return redirect()->route('loginpage');
             } else {
+                // else it will go to update profile page
                 $user = Auth::user();
                 return view('admin.profile.admin_updateprofile', compact('user'));
             }
         } else {
+            // else not authenticated it will navigate to loginpage
             return redirect()->route('loginpage');
         }
     }
 
     public function UpdateProfileRequest(Request $request)
     {
+        // validation for updating the profile
         $request->validate([
             'fullname' => 'required|string|max:255',
             'contact' => 'required|string|max:255',
@@ -98,12 +106,14 @@ class AdminController extends Controller
             'email' => $request->email,
         ];
 
+        // update password return it to old even it is empty
         if (!empty($request->password)) {
             $data['password'] = Hash::make($request->password);
         }
 
         $user->update($data);
 
+        // display success message
         return redirect()->route('admin.updateprofile')->with('success', 'Profile updated successfully.');
     }
 }
