@@ -13,6 +13,7 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MyOrderController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\staff\StaffAnalyticsController;
 use App\Http\Controllers\staff\StaffController;
@@ -44,6 +45,10 @@ Route::get('/contact', [ContactController::class, 'ContactPage'])->name('contact
 
 
 // CUSTOMERS REQUEST
+
+// MY PROFILE
+Route::get('/myprofile', [ProfileController::class, 'MyProfilePage'])->name('myprofilepage');
+Route::post('/myprofile/update_request', [ProfileController::class, 'UpdateMyProfileRequest'])->name('updatemyprofilerequest');
 
 // CART
 Route::post('/cart/add', [CartController::class, 'AddToCartRequest'])->name('cart.add');

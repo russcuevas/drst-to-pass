@@ -74,7 +74,7 @@
                         @auth
                             @if(auth()->user()->role == 'customers')
                                 <ul>
-                                    <li><a href="" style="color: black !important"><i class="fa fa-user"></i> Profile</a></li>
+                                    <li><a href="{{ route('myprofilepage') }}" style="color: black !important"><i class="fa fa-user"></i> Profile</a></li>
                                     <li><a href="{{ route('logoutrequest') }}" style="color: rgb(157, 16, 16) !important">Logout</a></li>
                                     <li><a href="{{ route('view.cart') }}"><i class="fa fa-shopping-bag"></i> <span>{{ count($cart_items) }}</span></a></li>
                                     <div class="header__cart__price">Total: <span>₱{{ number_format($total_price, 2) }}</span></div>

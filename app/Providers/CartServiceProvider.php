@@ -21,7 +21,7 @@ class CartServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::composer(['page.cart', 'page.home', 'page.single_product', 'page.checkout', 'auth.login', 'auth.register', 'page.track_orders', 'page.shop', 'page.show_orders', 'page.contact'], function ($view) {
+        View::composer(['page.cart', 'page.home', 'page.single_product', 'page.checkout', 'auth.login', 'auth.register', 'page.track_orders', 'page.shop', 'page.show_orders', 'page.contact', 'page.myprofile'], function ($view) {
             $customer_id = auth()->id();
 
             $cart_items = Cart::where('customer_id', $customer_id)->with('product')->get();
