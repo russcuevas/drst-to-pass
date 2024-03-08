@@ -26,6 +26,41 @@
 <body>
     @include('page.components.header')
 
+        {{-- displaying the validation error --}}
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                @foreach ($errors->all() as $error)
+                    {{ $error }} <br>
+                @endforeach
+            </div>
+        @endif
+
+
+        @if (session('success'))
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                @if (session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
+            </div>
+        </div>
+
+        @endif
+
+        @if (session('error'))
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                @if (session('error'))
+                    <div class="alert alert-danger">
+                        {{ session('error') }}
+                    </div>
+                @endif
+            </div>
+        </div>
+        @endif
+
     <!-- Breadcrumb Section Begin -->
     <section class="breadcrumb-section set-bg" style="background-image: url('https://www.doka-shop.com.my/image/dokashop/image/data/about/main_about_rice.jpg');">
         <div class="container">
@@ -108,21 +143,22 @@
                         </div>
                     </div>
                 </div>
-                <form action="#" method="POST">
+                <form action="{{ route('send_inquiry') }}" method="POST">
                     @csrf
                     <div class="row">
                         <div class="col-lg-6 col-md-6">
-                            <input type="text" placeholder="Your name">
+                            <input type="text" placeholder="Your name" name="name" required>
                         </div>
                         <div class="col-lg-6 col-md-6">
-                            <input type="text" placeholder="Your Email">
+                            <input type="email" placeholder="Your Email" name="email" required>
                         </div>
                         <div class="col-lg-12 text-center">
-                            <textarea placeholder="Your message"></textarea>
+                            <textarea placeholder="Your message" name="message" required></textarea>
                             <button type="submit" class="site-btn">SEND MESSAGE</button>
                         </div>
                     </div>
                 </form>
+
             </div>
         </div>
         <!-- Contact Form End -->

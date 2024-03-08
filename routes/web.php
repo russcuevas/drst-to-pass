@@ -41,6 +41,7 @@ Route::get('/view/product/{id}', [HomeController::class, 'SingleProductPage'])->
 Route::get('/shop', [ShopController::class, 'ShopPage'])->name('shoppage');
 Route::get('/shop/filter', [ShopController::class, 'FilterByGrain'])->name('shopgrain');
 Route::get('/contact', [ContactController::class, 'ContactPage'])->name('contactpage');
+Route::post('/contact/submit', [ContactController::class, 'SendEmail'])->name('send_inquiry');
 //////////////////////////  END /////////////////////////////////
 
 
@@ -66,6 +67,7 @@ Route::get('/my_orders', [MyOrderController::class, 'MyOrderPage'])->name('myord
 Route::get('/my_orders/{ReferenceNumber}', [MyOrderController::class, 'ShowMyOrders'])
     ->name('myordershow');
 Route::post('/cancel-myorders', [MyOrderController::class, 'CancelMyOrders'])->name('cancel-myorders');
+
 
 
 
