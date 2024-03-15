@@ -10,9 +10,11 @@
                                     alt=""> &nbsp; Dimasupil</a>
                         </div>
                         <ul>
-                            <li>Address: Sample</li>
-                            <li>Phone: Sample</li>
-                            <li>Email: sample@gmail.com</li>
+                            <li>#1354, Sampaguita Street, Ismar Kalawaan, Pasig City</li>
+                            <li>09478510206 - SMART <br>
+                                09957016519 - GLOBE <br>
+                                (02)-8350-4696 - PLDT</li>
+                            <li>twilightharrypotterhunger23@gmail.com</li>
                         </ul>
                     </div>
                 </div>

@@ -85,29 +85,32 @@
                     <div class="col-lg-3 col-md-3 col-sm-6 text-center">
                         <div class="contact__widget">
                             <span class="icon_phone"></span>
-                            <h4>Phone</h4>
-                            <p>sample</p>
+                            <h4>Contact</h4>
+                            <p>09478510206 - SMART <br>
+                                09957016519 - GLOBE <br>
+                                (02)-8350-4696 - PLDT
+                            </p>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-6 text-center">
                         <div class="contact__widget">
                             <span class="icon_pin_alt"></span>
                             <h4>Address</h4>
-                            <p>sample</p>
+                            <p>#1354, Sampaguita Street, Ismar Kalawaan, Pasig City</p>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-6 text-center">
                         <div class="contact__widget">
                             <span class="icon_clock_alt"></span>
                             <h4>Open time</h4>
-                            <p>sample</p>
+                            <p>6:00am -- 10:00pm</p>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-6 text-center">
                         <div class="contact__widget">
                             <span class="icon_mail_alt"></span>
                             <h4>Email</h4>
-                            <p>sample@gmail.com</p>
+                            <p>twilightharrypotterhunger23@gmail.com</p>
                         </div>
                     </div>
                 </div>
@@ -117,16 +120,15 @@
 
         <!-- Map Begin -->
         <div class="map">
-            <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3867.3183054788017!2d121.03838981482024!3d13.885619990266246!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397a08ebcf17815%3A0x1aaf0335f065f2da!2sBubuyan%2C%20Mataasnakahoy%2C%20Batangas!5e0!3m2!1sen!2sph!4v1641486193764!5m2!1sen!2sph"
-                height="500" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+        <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15406.623212337882!2d121.09867808396299!3d14.555961045233205!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397a8fb52e3c85d%3A0x1b8d5a9a71e9d4b4!2s1354%20Sampaguita%20St%2C%20Pasig%2C%201602%20Metro%20Manila!5e0!3m2!1sen!2sph!4v1647347240715!5m2!1sen!2sph"
+        height="500" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
             <div class="map-inside">
                 <i class="icon_pin"></i>
                 <div class="inside-widget">
-                    <h4>Sample</h4>
+                    <h4>Location</h4>
                     <ul>
-                        <li>Phone: sample</li>
-                        <li>Address: sample</li>
+                        <li>Address: #1354, Sampaguita Street, Ismar Kalawaan, Pasig City</li>
                     </ul>
                 </div>
             </div>
