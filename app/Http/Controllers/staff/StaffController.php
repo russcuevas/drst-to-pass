@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class StaffController extends Controller
 {
@@ -47,5 +48,49 @@ class StaffController extends Controller
             ->orderBy('order_created_at', 'desc')
             ->limit(5)
             ->get();
+    }
+    
+    public function UpdateProfileStaff()
+    {
+        if (Auth::check()){
+            if (Auth::user()->role !== 'staff'){
+                return redirect()->route('loginpage');
+            } else {
+                $user = Auth::user();
+                return view ('staff.profile.staff_update_profile', compact('user'));
+            }
+        } else {
+            return redirect()->route('loginpage');
+        }
+    }
+
+    public function UpdateProfileStaffRequest(Request $request){
+        // validation for updating the profile
+        $request->validate([
+            'fullname' => 'required|string|max:255',
+            'contact' => 'required|string|max:255',
+            'address' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users,email,' . Auth::id(),
+            'password' => 'nullable|string|min:6|max:255|confirmed',
+        ]);
+
+        $user = Auth::user();
+
+        $data = [
+            'fullname' => $request->fullname,
+            'contact' => $request->contact,
+            'address' => $request->address,
+            'email' => $request->email,
+        ];
+
+        // update password return it to old even it is empty
+        if (!empty($request->password)) {
+            $data['password'] = Hash::make($request->password);
+        }
+
+        $user->update($data);
+
+        // display success message
+        return redirect()->route('staff.updatepage')->with('success', 'Profile updated successfully.');
     }
 }

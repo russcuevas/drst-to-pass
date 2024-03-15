@@ -150,6 +150,8 @@ Route::get('/top-products', [AnalyticsController::class, 'GetTopProducts'])->nam
 ////////////////////////// STAFF /////////////////////////////////
 // STAFF DASHBOARD
 Route::get('/staff/staff_dashboard', [StaffController::class, 'StaffDashboard'])->name('staff.dashboard');
+Route::get('/staff/myprofile', [StaffController::class, 'UpdateProfileStaff'])->name('staff.updatepage');
+Route::post('/staff/myprofile/update_request', [StaffController::class, 'UpdateProfileStaffRequest'])->name('staff.updaterequest');
 
 // STAFF REPORTS
 Route::get('/staff/staff_reports', [StaffReportsController::class, 'ReportsPage'])->name('staff.reports');
