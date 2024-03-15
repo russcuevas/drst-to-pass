@@ -22,6 +22,9 @@
     <link rel="stylesheet" href="{{ asset('page/css/owl.carousel.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('page/css/slicknav.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('page/css/style.css') }}" type="text/css">
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+
 </head>
 
 <body>
@@ -45,17 +48,15 @@
     </section>
     <!-- Breadcrumb Section End -->
 
-    
-
     <!-- Shoping Cart Section Begin -->
     <section class="shoping-cart spad">
-        <div class="container">
+        <div class="container container-box">
             @auth
             @if ($orders->isNotEmpty())
             <div class="row">
                 <div class="col-lg-12">
                     <div class="shoping__cart__table">
-                        <table>
+                        <table id="ordersTable">
                             <thead>
                                 <tr>
                                     <th class="shoping__product">Reference number</th>
@@ -82,9 +83,9 @@
                                         @endif
                                     </td>
                                     <td class="shoping__cart__item__close">
-                                        <a style="color: blue" href="{{ route('myordershow', ['ReferenceNumber' => $order->reference_number]) }}">Track your orders</a>
+                                        <a style="color: blue" href="{{ route('myordershow', ['ReferenceNumber' => $order->reference_number]) }}">Track orders</a>
                                     </td>
-                                </tr>                                    
+                                </tr>
                                 @endforeach
                             </tbody>
                         </table>
@@ -92,22 +93,22 @@
                 </div>
             </div>
             @else
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="shoping__cart__table">
-                            <table>
-                                <thead>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="shoping__cart__table">
+                        <table>
+                            <thead>
 
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td colspan="8" style="color: brown; font-weight: 900; font-size: 50px">No orders available </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td colspan="8" style="color: brown; font-weight: 900; font-size: 50px">No orders available </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
+            </div>
             @endif
             @else
             <div class="row">
@@ -124,9 +125,8 @@
                     </div>
                 </div>
             </div>
-        @endauth
+            @endauth
     </section>
-
     <!-- Shoping Cart Section End -->
 
     @include('page.components.footer')
@@ -141,7 +141,14 @@
     <script src="{{ asset('page/ajax/cart/update_cart.js')}}"></script>
     <script src="{{ asset('page/ajax/cart/delete_cart.js')}}"></script>
 
+    <!-- DataTables JavaScript -->
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
 
-
+    <script>
+        $(document).ready(function() {
+            $('#ordersTable').DataTable();
+        });
+    </script>
 </body>
+
 </html>

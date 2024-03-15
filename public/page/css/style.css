@@ -6,6 +6,12 @@ body {
 	font-smoothing: antialiased;
 }
 
+.container-box {
+	border: 1px solid black;
+	padding: 20px;
+	border-radius: 5px;
+}
+
 #scroll-to-top {
 	display: none;
 	position: fixed;
